@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 四季旅行日記</title>
+
+    
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="myall.css">
+
+
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background-color: #f8f7f3;
+            color: #3c4039;
+        }
+
+        .main-title {
+            background-color: #5a6851;
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 30px;
+        }
+
+        .main-title h1 {
+            font-weight: 900;
+        }
+
+        /* 整條時間軸 */
+        .timeline-section {
+            position: relative;
+            padding: 10px 0;
+        }
+
+        /* 中央直線 */
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            background-color: rgba(90, 104, 81, 0.4);
+        }
+
+        /* 每個季節的定位範圍 */
+        .timeline-section-pointer {
+            position: relative;
+        }
+
+        /* 時間軸圓點 */
+        .timeline-section-pointer::before {
+            position: absolute;
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-color:plum;;
+            border: 2px solid white;
+            border-radius: 50%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            top: -5px;
+            z-index: 2;
+        }
+
+        .travel-row {
+            margin-bottom: 35px;
+        }
+
+        .img-box {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+            background-position: center center;
+            background-size: cover;
+            border-radius: 8px;
+        }
+
+        .text-box {
+            padding: 20px;
+        }
+
+        .text-box h2 {
+            font-weight: 900;
+            color: #5a6851;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .travel-date {
+            color: #b07947;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .text-box p {
+            line-height: 1.9;
+        }
+
+        .footer {
+            background-color: #5a6851;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+
+        .roller-box {
+            position: absolute;
+            inset: 0;
+            color: white;
+            background-color: rgba(45, 59, 42, 0.72);
+            transition: transform 0.7s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .roller-box span {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .roller-left .roller-box {
+            transform: translateX(-100%);
+        }
+
+        .roller-right .roller-box {
+            transform: translateX(100%);
+        }
+
+        .roller-top .roller-box {
+            transform: translateY(-100%);
+        }
+
+        .roller-down .roller-box {
+            transform: translateY(100%);
+        }
+
+        .roller:hover .roller-box,
+        .roller:focus .roller-box {
+            transform: translate(0, 0);
+        }
+
+        .roller:focus-visible {
+            outline: 3px solid #b07947;
+            outline-offset: 3px;
+        }
+
+        /* 手機版保持簡單 */
+        @media screen and (max-width: 767.98px) {
+            .main-title h1 {
+                font-size: 28px;
+            }
+
+            .img-box {
+                height: 210px;
+            }
+
+            .text-box {
+                padding: 18px 8px;
+            }
+
+            .timeline-section {
+                margin-left: 20px;
+            }
+
+            .timeline-section::before {
+                left: -10px;
+                transform: translateX(-50%);
+            }
+
+            .timeline-section-pointer::before {
+                left: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .roller-box {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="main-title">
+            <h1>2026 四季旅行日記</h1>
+            <p class="mb-0">
+                把平凡的日子，收藏成美好的風景
+            </p>
+        </div>
+
+        <div class="timeline-section">
+
+            <!-- 春天 -->
+            <div class="row align-items-center travel-row timeline-section-pointer">
+
+                <div class="col-md-6">
+                    <div class="img-box roller roller-left" tabindex="0" role="group"
+                         aria-label="春天照片，遮罩從左側滑入"
+                         style="background-image: url('spring.jpg');">
+                        <div class="roller-box"><span>春天・重新出發</span></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="text-box">
+                        <div class="travel-date">2026 / 春天</div>
+                        <h2>第一站：春天的重新出發</h2>
+
+                        <p>
+                            春天是一個適合重新開始的季節。
+                            看著綠意盎然的風景，心情也跟著明亮起來。
+                        </p>
+
+                        <p>
+                            2026 年，我希望自己能勇敢嘗試新的事物，
+                            不再因為陌生而退縮。
+                        </p>
+
+                        <p>
+                            旅行不一定要走得很遠，
+                            有時候換一個角度看世界，就是新的開始。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 夏天 -->
+            <div class="row flex-md-row-reverse align-items-center travel-row timeline-section-pointer">
+
+                <div class="col-md-6">
+                    <div class="img-box roller roller-right" tabindex="0" role="group"
+                         aria-label="夏天照片，遮罩從右側滑入"
+                         style="background-image: url('summer.jpg');">
+                        <div class="roller-box"><span>夏天・勇敢探索</span></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="text-box">
+                        <div class="travel-date">2026 / 夏天</div>
+                        <h2>第二站：夏天的勇敢探索</h2>
+
+                        <p>
+                            夏天的陽光總是充滿活力。
+                            藍色天空、海風與美麗風景，
+                            讓人想暫時放下生活中的忙碌。
+                        </p>
+
+                        <p>
+                            每一次探索，都可能帶來新的發現。
+                            即使遇到困難，也能一步一步找到方向。
+                        </p>
+
+                        <p>
+                            希望自己保有好奇心，
+                            勇敢走向更多不一樣的風景。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 秋天 -->
+            <div class="row align-items-center travel-row timeline-section-pointer">
+
+                <div class="col-md-6">
+                    <div class="img-box roller roller-top" tabindex="0" role="group"
+                         aria-label="秋天照片，遮罩從上方滑入"
+                         style="background-image: url('fall.jpg');">
+                        <div class="roller-box"><span>秋天・學習成長</span></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="text-box">
+                        <div class="travel-date">2026 / 秋天</div>
+                        <h2>第三站：秋天的學習與成長</h2>
+
+                        <p>
+                            秋天的景色多了一份沉靜，
+                            也讓人想起這一年累積的點點滴滴。
+                        </p>
+
+                        <p>
+                            學習新事物有時候並不容易，
+                            但每一次練習，都是向前邁進的一小步。
+                        </p>
+
+                        <p>
+                            希望未來回頭看時，
+                            能發現自己比想像中更加勇敢。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 冬天 -->
+            <div class="row flex-md-row-reverse align-items-center travel-row timeline-section-pointer">
+
+                <div class="col-md-6">
+                    <div class="img-box roller roller-down" tabindex="0" role="group"
+                         aria-label="冬天照片，遮罩從下方滑入"
+                         style="background-image: url('winter.jpg');">
+                        <div class="roller-box"><span>冬天・期待希望</span></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="text-box">
+                        <div class="travel-date">2026 / 冬天</div>
+                        <h2>第四站：冬天的期待與希望</h2>
+
+                        <p>
+                            冬天適合靜下心來，
+                            整理這一年經歷的事情與心情。
+                        </p>
+
+                        <p>
+                            有些事情不一定能立即完成，
+                            但只要持續努力，就有機會慢慢接近目標。
+                        </p>
+
+                        <p>
+                            希望帶著今年的收穫，
+                            用更成熟、更自信的自己迎接新的一年。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <h5>2026 四季旅行日記</h5>
+            <p class="mb-0">
+                每一個季節，都有值得珍藏的故事。
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

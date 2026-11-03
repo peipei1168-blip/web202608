@@ -1,0 +1,2523 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+    <!-- =========================================================
+         【生成式網站作業】
+
+         網站主題：
+         珠寶金工手作課程 Landing Page
+
+         本網站整合課堂學習：
+
+         ① HTML5
+         ② CSS
+         ③ Flexbox
+         ④ CSS Grid
+         ⑤ RWD 響應式設計
+         ⑥ SEO 八大架構
+         ⑦ HTML 語意化標籤
+
+         【目前尚未加入】
+         JavaScript、PHP（老師尚未教到，先不加入）
+
+         =========================================================
+         【SEO 結構手動檢查 8 大條列】
+
+         1. H1 標題唯一性
+         2. 標題層級順序檢查
+         3. 網頁描述檢查 Meta Description
+         4. 圖片身份證檢查 Alt 屬性
+         5. 假連結抓漏
+         6. 假按鈕抓漏
+         7. 網頁基本門面檢查
+         8. 外殼語意化檢查（消滅 Div Soup）
+
+         =========================================================
+    -->
+
+
+    <!-- =========================================================
+         【SEO 第 7 項｜網頁基本門面】
+
+         charset：
+         防止中文亂碼。
+
+         viewport：
+         讓網頁可以在手機與平板正常顯示。
+
+         lang="zh-TW"：
+         告訴搜尋引擎這是一個繁體中文網站。
+    ========================================================= -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <!-- =========================================================
+         【SEO 第 7 項｜Title】
+
+         Title 是瀏覽器分頁與搜尋引擎判斷網站主題的重要資訊。
+    ========================================================= -->
+
+    <title>
+        光影金工｜珠寶金工手作課程｜親手打造專屬珠寶
+    </title>
+
+
+    <meta
+        name="author"
+        content="光影金工"
+    >
+
+    <meta
+        name="theme-color"
+        content="#d98b9b"
+    >
+
+
+    <!-- =========================================================
+         【SEO 第 3 項｜Meta Description】
+
+         網頁描述：
+         用簡短文字說明這個網站的內容。
+
+         關鍵內容：
+         珠寶金工
+         金工課程
+         手作戒指
+         手作珠寶
+         金工體驗
+    ========================================================= -->
+
+    <meta
+        name="description"
+        content="光影金工珠寶金工手作課程，從工具認識、金屬加工、鋸切、打磨到作品完成，帶你親手打造專屬自己的手作珠寶。零經驗也能參加，立即預約金工體驗課，開始你的第一件金工作品。"
+    >
+
+
+    <style>
+
+        /* =========================================================
+           【CSS｜色彩管理】
+
+           老師要求：
+           必須在 :root 宣告三個 CSS 變數。
+
+           ① 粉色背景
+           ② 主打明亮色
+           ③ 鮮豔背景
+        ========================================================= */
+
+        :root {
+
+            --pink-bg: #fff3f6;
+
+            --main-color: #d98b9b;
+
+            --bright-bg: #f6c3cf;
+
+            --dark-color: #332a2c;
+
+            --gray-color: #756b6d;
+
+            --white-color: #ffffff;
+
+            --border-color: #ead9dc;
+
+            --gold-color: #c99a52;
+
+        }
+
+
+        /* =========================================================
+           【CSS｜Reset】
+
+           *：
+           選取所有元素。
+
+           margin：
+           外距。
+
+           padding：
+           內距。
+
+           box-sizing：
+           控制盒模型。
+        ========================================================= */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        body {
+
+            font-family:
+                "Noto Sans TC",
+                "Microsoft JhengHei",
+                Arial,
+                sans-serif;
+
+            color: var(--dark-color);
+
+            background-color: var(--pink-bg);
+
+            line-height: 1.8;
+
+        }
+
+
+        img {
+
+            display: block;
+
+            width: 100%;
+
+        }
+
+
+        a {
+
+            color: inherit;
+
+            text-decoration: none;
+
+        }
+
+
+        button,
+        input {
+
+            font-family: inherit;
+
+        }
+
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+        }
+
+
+        .section {
+
+            padding: 90px 0;
+
+        }
+
+
+        /* =========================================================
+           【CSS｜共用區塊標題】
+        ========================================================= */
+
+        .section-title {
+
+            text-align: center;
+
+            margin-bottom: 50px;
+
+        }
+
+
+        .section-title span {
+
+            display: block;
+
+            color: var(--main-color);
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .section-title h2 {
+
+            font-size: 38px;
+
+            line-height: 1.4;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .section-title p {
+
+            color: var(--gray-color);
+
+        }
+
+
+        /* =========================================================
+           【HEADER｜START】
+
+           【老師教學重點｜Flexbox】
+
+           display: flex：
+           啟用 Flexbox。
+
+           justify-content: space-between：
+           Logo 與報名按鈕左右兩端對齊。
+
+           align-items: center：
+           垂直置中。
+        ========================================================= */
+
+        .header {
+
+            width: 100%;
+
+            padding: 18px 5%;
+
+            background-color:
+                rgba(255, 255, 255, 0.97);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 3px 18px rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .logo-subtitle {
+
+            display: block;
+
+            color: var(--main-color);
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            line-height: 1.2;
+
+        }
+
+
+        .header-button {
+
+            display: inline-block;
+
+            padding: 11px 25px;
+
+            color: var(--white-color);
+
+            background-color: var(--main-color);
+
+            border-radius: 30px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .header-button:hover {
+
+            background-color: var(--dark-color);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        /* =========================================================
+           【HEADER｜END】
+        ========================================================= */
+
+
+        /* =========================================================
+           【HERO｜START】
+
+           【SEO 第 1 項｜H1 唯一性】
+
+           全網站只使用一個 H1。
+
+           H1 是整個網站最重要的主題。
+        ========================================================= */
+
+        .hero {
+
+            min-height: 720px;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            background-image:
+
+                linear-gradient(
+                    90deg,
+                    rgba(255, 243, 246, 0.98) 0%,
+                    rgba(255, 243, 246, 0.88) 42%,
+                    rgba(255, 243, 246, 0.25) 100%
+                ),
+
+                url("https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1800&q=90");
+
+            background-size: cover;
+
+            background-position: center;
+
+        }
+
+
+        .hero-content {
+
+            max-width: 650px;
+
+        }
+
+
+        .hero-label {
+
+            display: inline-block;
+
+            padding: 7px 17px;
+
+            margin-bottom: 22px;
+
+            background-color: var(--bright-bg);
+
+            border-radius: 30px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        /* =========================================================
+           【SEO 第 1 項】
+
+           全網站唯一 H1。
+        ========================================================= */
+
+        .hero h1 {
+
+            font-size: 60px;
+
+            line-height: 1.25;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .hero-highlight {
+
+            color: var(--main-color);
+
+        }
+
+
+        .hero-description {
+
+            max-width: 580px;
+
+            color: var(--gray-color);
+
+            font-size: 18px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .hero-buttons {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .hero-button {
+
+            display: inline-block;
+
+            padding: 15px 34px;
+
+            color: var(--white-color);
+
+            background-color: var(--dark-color);
+
+            border-radius: 35px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .hero-button:hover {
+
+            background-color: var(--main-color);
+
+            transform: translateY(-3px);
+
+        }
+
+
+        .hero-note {
+
+            color: var(--gray-color);
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================================================
+           【HERO｜END】
+        ========================================================= */
+
+
+        /* =========================================================
+           【FEATURES｜START】
+
+           【SEO 第 2 項｜標題層級】
+
+           H1
+           ↓
+           H2
+           ↓
+           H3
+
+           不亂跳標題。
+        ========================================================= */
+
+        .features-grid {
+
+            /*
+             * 電腦版 3 欄
+             */
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            /*
+             * gap: 24px
+             */
+
+            gap: 24px;
+
+        }
+
+
+        .feature-card {
+
+            padding: 42px 30px;
+
+            background-color: var(--white-color);
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            transition: 0.3s;
+
+        }
+
+
+        .feature-card:hover {
+
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 18px 35px rgba(0, 0, 0, 0.09);
+
+        }
+
+
+        .feature-icon {
+
+            width: 75px;
+
+            height: 75px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background-color: var(--bright-bg);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 31px;
+
+        }
+
+
+        .feature-card h3 {
+
+            font-size: 21px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .feature-card p {
+
+            color: var(--gray-color);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================================================
+           【FEATURES｜END】
+        ========================================================= */
+
+
+        /* =========================================================
+           【EXPERIENCE｜START】
+        ========================================================= */
+
+        .experience-section {
+
+            background-color: var(--white-color);
+
+        }
+
+
+        .experience-layout {
+
+            display: grid;
+
+            grid-template-columns: 1.05fr 1fr;
+
+            gap: 60px;
+
+            align-items: center;
+
+        }
+
+
+        .experience-image {
+
+            position: relative;
+
+        }
+
+
+        .experience-image img {
+
+            height: 520px;
+
+            object-fit: cover;
+
+            border-radius: 24px;
+
+        }
+
+
+        .image-badge {
+
+            position: absolute;
+
+            left: 25px;
+
+            bottom: 25px;
+
+            padding: 15px 22px;
+
+            background-color:
+                rgba(255, 255, 255, 0.95);
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.12);
+
+        }
+
+
+        .image-badge strong {
+
+            display: block;
+
+            color: var(--main-color);
+
+            font-size: 20px;
+
+        }
+
+
+        .experience-content h2 {
+
+            font-size: 38px;
+
+            line-height: 1.4;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .experience-content > p {
+
+            color: var(--gray-color);
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .course-list {
+
+            list-style: none;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .course-list li {
+
+            padding: 12px 0;
+
+            padding-left: 32px;
+
+            border-bottom: 1px solid var(--border-color);
+
+            position: relative;
+
+        }
+
+
+        .course-list li::before {
+
+            content: "✓";
+
+            position: absolute;
+
+            left: 0;
+
+            color: var(--main-color);
+
+            font-weight: bold;
+
+        }
+
+
+        .small-cta {
+
+            display: inline-block;
+
+            padding: 12px 25px;
+
+            border: 1px solid var(--main-color);
+
+            border-radius: 30px;
+
+            color: var(--main-color);
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .small-cta:hover {
+
+            background-color: var(--main-color);
+
+            color: var(--white-color);
+
+        }
+
+
+        /* =========================================================
+           【EXPERIENCE｜END】
+        ========================================================= */
+
+
+        /* =========================================================
+           【WORKS｜START】
+
+           【SEO 第 4 項｜圖片身份證】
+
+           每一張圖片都必須有 alt。
+
+           alt 要描述真正的圖片內容。
+
+           本區特別改成：
+
+           ① 手作銀戒
+           ② 流線金工項鍊
+           ③ 金工製作過程
+
+           讓使用者看到作品後產生報名動機。
+        ========================================================= */
+
+        .works-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 24px;
+
+        }
+
+
+        .work-card {
+
+            overflow: hidden;
+
+            background-color: var(--white-color);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .work-card img {
+
+            height: 330px;
+
+            object-fit: cover;
+
+            transition: 0.5s;
+
+        }
+
+
+        .work-card:hover img {
+
+            transform: scale(1.05);
+
+        }
+
+
+        .work-content {
+
+            padding: 22px;
+
+        }
+
+
+        .work-content h3 {
+
+            font-size: 20px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .work-content p {
+
+            color: var(--gray-color);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================================================
+           【WORKS｜END】
+        ========================================================= */
+
+
+        /* =========================================================
+           【PROCESS｜START】
+        ========================================================= */
+
+        .process-section {
+
+            background-color: var(--pink-bg);
+
+        }
+
+
+        .process-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .process-card {
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            background-color: var(--white-color);
+
+            border-radius: 18px;
+
+        }
+
+
+        .process-number {
+
+            width: 48px;
+
+            height: 48px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background-color: var(--dark-color);
+
+            color: var(--white-color);
+
+            font-weight: bold;
+
+        }
+
+
+        .process-card h3 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .process-card p {
+
+            color: var(--gray-color);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================================================
+           【PROCESS｜END】
+        ========================================================= */
+
+
+        /* =========================================================
+           【TEACHER｜START】
+        ========================================================= */
+
+        .teacher-section {
+
+            background-color: var(--bright-bg);
+
+        }
+
+
+        .teacher-layout {
+
+            max-width: 950px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: 320px 1fr;
+
+            gap: 55px;
+
+            align-items: center;
+
+        }
+
+
+        .teacher-photo img {
+
+            width: 280px;
+
+            height: 280px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 8px solid rgba(255,255,255,0.7);
+
+        }
+
+
+        .teacher-content h2 {
+
+            font-size: 36px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .teacher-title {
+
+            color: var(--gold-color);
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .teacher-content p {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        /* =========================================================
+           【TEACHER｜END】
+        ========================================================= */
+
+
+        /* =========================================================
+           【CTA｜START】
+
+           使用真正 button。
+
+           不使用：
+
+           <div onclick="">
+           <span onclick="">
+        ========================================================= */
+
+        .cta-section {
+
+            padding: 100px 20px;
+
+            text-align: center;
+
+            color: var(--white-color);
+
+            background-color: var(--dark-color);
+
+            background-image:
+
+                linear-gradient(
+                    rgba(51, 42, 44, 0.92),
+                    rgba(51, 42, 44, 0.92)
+                ),
+
+                url("https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1600&q=90");
+
+            background-size: cover;
+
+            background-position: center;
+
+        }
+
+
+        .cta-section h2 {
+
+            font-size: 44px;
+
+            line-height: 1.4;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .cta-section p {
+
+            color: #eee3e5;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .cta-button {
+
+            display: inline-block;
+
+            padding: 16px 42px;
+
+            background-color: var(--main-color);
+
+            color: var(--white-color);
+
+            border-radius: 35px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .cta-button:hover {
+
+            background-color: var(--bright-bg);
+
+            color: var(--dark-color);
+
+            transform: translateY(-3px);
+
+        }
+
+
+        /* =========================================================
+           【REGISTER｜START】
+        ========================================================= */
+
+        .register-section {
+
+            background-color: var(--white-color);
+
+        }
+
+
+        .register-box {
+
+            max-width: 760px;
+
+            margin: 0 auto;
+
+            padding: 45px;
+
+            background-color: var(--pink-bg);
+
+            border-radius: 24px;
+
+        }
+
+
+        .register-box h2 {
+
+            text-align: center;
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .register-box > p {
+
+            text-align: center;
+
+            color: var(--gray-color);
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 10px;
+
+            outline: none;
+
+            background-color: var(--white-color);
+
+        }
+
+
+        .form-group input:focus {
+
+            border-color: var(--main-color);
+
+        }
+
+
+        .submit-button {
+
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background-color: var(--dark-color);
+
+            color: var(--white-color);
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .submit-button:hover {
+
+            background-color: var(--main-color);
+
+        }
+
+
+        .form-note {
+
+            margin-top: 14px;
+
+            color: var(--gray-color);
+
+            font-size: 12px;
+
+            text-align: center;
+
+        }
+
+
+        /* =========================================================
+           【REGISTER｜END】
+        ========================================================= */
+
+
+        /* =========================================================
+           【FOOTER｜START】
+
+           SEO 第 8 項：
+           使用 footer 語意化標籤。
+        ========================================================= */
+
+        .footer {
+
+            padding: 25px;
+
+            text-align: center;
+
+            background-color: #282224;
+
+            color: #d4c8ca;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================================================
+           【RWD｜START】
+
+           @media (max-width: 768px)
+
+           電腦版：
+
+           Grid = 3 欄
+
+           手機版：
+
+           Grid = 1fr
+
+           → 單欄直排
+        ========================================================= */
+
+        @media (max-width: 768px) {
+
+
+            /* Header */
+
+            .header {
+
+                padding: 15px 5%;
+
+            }
+
+
+            .logo {
+
+                font-size: 20px;
+
+            }
+
+
+            .header-button {
+
+                padding: 8px 15px;
+
+                font-size: 12px;
+
+            }
+
+
+            /* Hero */
+
+            .hero {
+
+                min-height: 680px;
+
+                background-image:
+
+                    linear-gradient(
+                        rgba(255, 243, 246, 0.87),
+                        rgba(255, 243, 246, 0.87)
+                    ),
+
+                    url("https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1200&q=90");
+
+            }
+
+
+            .hero h1 {
+
+                font-size: 42px;
+
+            }
+
+
+            .hero-description {
+
+                font-size: 16px;
+
+            }
+
+
+            .hero-buttons {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .hero-button {
+
+                width: 100%;
+
+                text-align: center;
+
+            }
+
+
+            /* =====================================================
+               【Grid → 手機單欄】
+
+               1fr
+            ===================================================== */
+
+            .features-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .works-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .process-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .experience-layout {
+
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+
+            }
+
+
+            .experience-image img {
+
+                height: 380px;
+
+            }
+
+
+            .teacher-layout {
+
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                gap: 30px;
+
+            }
+
+
+            .teacher-photo img {
+
+                margin: 0 auto;
+
+            }
+
+
+            .section {
+
+                padding: 65px 0;
+
+            }
+
+
+            .section-title h2 {
+
+                font-size: 30px;
+
+            }
+
+
+            .experience-content h2 {
+
+                font-size: 30px;
+
+            }
+
+
+            .cta-section h2 {
+
+                font-size: 32px;
+
+            }
+
+
+            .register-box {
+
+                padding: 30px 20px;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           【RWD｜小手機】
+
+           480px 以下進一步縮小文字。
+        ========================================================= */
+
+        @media (max-width: 480px) {
+
+
+            .hero h1 {
+
+                font-size: 35px;
+
+            }
+
+
+            .header-button {
+
+                padding: 7px 11px;
+
+            }
+
+
+            .feature-card {
+
+                padding: 30px 20px;
+
+            }
+
+
+            .cta-section {
+
+                padding: 75px 20px;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         【SEO 第 8 項｜語意化 HTML】
+
+         使用 header。
+         不使用大量 div 當網站外殼。
+    ========================================================= -->
+
+    <header class="header">
+
+
+        <!-- =====================================================
+             【SEO 第 5 項｜真正的超連結】
+
+             使用 <a href="">
+             不使用 onclick 假連結。
+        ===================================================== -->
+
+        <a href="#top" class="logo" aria-label="光影金工首頁">
+
+            光影金工
+
+            <span class="logo-subtitle">
+                JEWELRY METALWORK
+            </span>
+
+        </a>
+
+
+        <a
+            href="#register"
+            class="header-button"
+        >
+            立即報名
+        </a>
+
+
+    </header>
+
+
+    <!-- =========================================================
+         【SEO 第 8 項】
+
+         main：
+         網頁主要內容。
+    ========================================================= -->
+
+    <main id="top">
+
+
+        <!-- =====================================================
+             【HERO｜START】
+
+             【SEO 第 1 項】
+
+             全站唯一 H1。
+        ===================================================== -->
+
+        <section class="hero">
+
+
+            <div class="container">
+
+
+                <div class="hero-content">
+
+
+                    <span class="hero-label">
+                        JEWELRY METALWORK EXPERIENCE
+                    </span>
+
+
+                    <h1>
+
+                        親手打造
+
+                        <br>
+
+                        <span class="hero-highlight">
+                            專屬於你的珠寶
+                        </span>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        不只是買一件飾品，
+                        而是親手把一塊金屬，
+                        變成只屬於你的故事。
+
+                        <br>
+
+                        零經驗也能參加的珠寶金工體驗課。
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+
+                        <!-- =================================================
+                             【SEO 第 5 項】
+
+                             真正的超連結：
+                             href="#register"
+                        ================================================== -->
+
+                        <a
+                            href="#register"
+                            class="hero-button"
+                        >
+                            立即預約體驗課 →
+                        </a>
+
+
+                        <span class="hero-note">
+                            小班制・實作教學・完成作品
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             【HERO｜END】
+        ===================================================== -->
+
+
+        <!-- =====================================================
+             【FEATURES｜START】
+
+             【SEO 第 2 項】
+
+             H1
+             ↓
+             H2
+             ↓
+             H3
+        ===================================================== -->
+
+        <section class="section" aria-labelledby="features-title">
+
+
+            <div class="container">
+
+
+                <div class="section-title">
+
+                    <span>
+                        WHY JEWELRY METALWORK
+                    </span>
+
+                    <h2 id="features-title">
+                        為什麼你會愛上金工？
+                    </h2>
+
+                    <p>
+                        把「想做」變成「我親手完成了」。
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     【｜CSS Grid】
+
+                     電腦版：
+
+                     repeat(3, 1fr)
+
+                     gap：
+
+                     24px
+                ================================================== -->
+
+                <div class="features-grid">
+
+
+                    <article class="feature-card">
+
+
+                        <div class="feature-icon">
+                            🔨
+                        </div>
+
+
+                        <h3>
+                            零經驗也能學
+                        </h3>
+
+
+                        <p>
+                            從工具認識開始，
+                            老師一步一步帶你完成，
+                            初學者也能安心體驗。
+                        </p>
+
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+
+                        <div class="feature-icon">
+                            💍
+                        </div>
+
+
+                        <h3>
+                            親手完成作品
+                        </h3>
+
+
+                        <p>
+                            從金屬加工、打磨到最後拋光，
+                            親手完成一件真正可以戴上的作品。
+                        </p>
+
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+
+                        <div class="feature-icon">
+                            ✨
+                        </div>
+
+
+                        <h3>
+                            每一件都不一樣
+                        </h3>
+
+
+                        <p>
+                            留下手作的紋理與溫度，
+                            打造真正屬於你的獨一無二珠寶。
+                        </p>
+
+
+                    </article>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             【FEATURES｜END】
+        ===================================================== -->
+
+
+        <!-- =====================================================
+             【EXPERIENCE｜START】
+        ===================================================== -->
+
+        <section class="section experience-section">
+
+
+            <div class="container">
+
+
+                <div class="experience-layout">
+
+
+                    <div class="experience-image">
+
+
+                        <!-- =================================================
+                             【SEO 第 4 項｜圖片身份證】
+
+                             alt：
+                             描述圖片內容。
+                        ================================================== -->
+
+                        <img
+                            src="https://images.pexels.com/photos/15955332/pexels-photo-15955332.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                            alt="珠寶金工老師使用工具製作銀飾的手作過程"
+                        >
+
+
+                        <div class="image-badge">
+
+                            <strong>
+                                HANDMADE
+                            </strong>
+
+                            親手完成你的作品
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="experience-content">
+
+
+                        <h2>
+                            從一塊金屬，
+                            到戴在手上的作品
+                        </h2>
+
+
+                        <p>
+
+                            金工最迷人的地方，
+                            就是你可以親眼看見材料在自己的雙手中慢慢改變。
+
+                        </p>
+
+
+                        <ul class="course-list">
+
+
+                            <li>
+                                認識金工工具與安全操作
+                            </li>
+
+
+                            <li>
+                                金屬鋸切與基本加工
+                            </li>
+
+
+                            <li>
+                                銼修、打磨與表面處理
+                            </li>
+
+
+                            <li>
+                                金屬成形與珠寶組裝
+                            </li>
+
+
+                            <li>
+                                完成自己的手作珠寶
+                            </li>
+
+
+                        </ul>
+
+
+                        <a
+                            href="#register"
+                            class="small-cta"
+                        >
+                            我想親手做看看 →
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             【EXPERIENCE｜END】
+        ===================================================== -->
+
+
+        <!-- =====================================================
+             【WORKS｜START】
+
+             這裡是這次特別重新整理的照片區。
+
+             ① 手作銀戒
+             ② 流線金工項鍊
+             ③ 金工實作
+        ===================================================== -->
+
+        <section class="section">
+
+
+            <div class="container">
+
+
+                <div class="section-title">
+
+                    <span>
+                        HANDMADE JEWELRY
+                    </span>
+
+                    <h2>
+                        這就是你可以完成的作品
+                    </h2>
+
+                    <p>
+                        看見成品，就開始想像自己戴上的樣子。
+                    </p>
+
+                </div>
+
+
+                <div class="works-grid">
+
+
+                    <!-- =================================================
+                         【作品一｜手作銀戒】
+
+                         SEO 第 4 項：
+                         alt 描述圖片。
+
+                         這張使用較清楚的手作銀戒照片。
+                    ================================================== -->
+
+                    <article class="work-card">
+
+
+                        <img
+                            src="https://images.pexels.com/photos/15955386/pexels-photo-15955386.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                            alt="手作銀戒珠寶金工作品與細緻金屬紋理"
+                        >
+
+
+                        <div class="work-content">
+
+
+                            <h3>
+                                手作銀戒
+                            </h3>
+
+
+                            <p>
+                                從金屬加工、鋸切、銼修到打磨，
+                                親手完成一枚屬於自己的戒指。
+                            </p>
+
+
+                        </div>
+
+
+                    </article>
+
+
+                    <!-- =================================================
+                         【作品二｜流線金工項鍊】
+
+                         這張特別選擇具有：
+                         波浪
+                         流線
+                         有機線條
+
+                         的項鍊作品。
+
+                         更符合「金工設計」的視覺。
+                    ================================================== -->
+
+                    <article class="work-card">
+
+
+                        <img
+                            src="https://cdn01.pinkoi.com/product/qn5ArB4p/2/640x530.jpg"
+                            alt="流線波浪造型金工項鍊作品"
+                        >
+
+
+                        <div class="work-content">
+
+
+                            <h3>
+                                流線金工項鍊
+                            </h3>
+
+
+                            <p>
+                                以金屬線條創造自然流動的曲線，
+                                將設計感融入日常珠寶。
+                            </p>
+
+
+                        </div>
+
+
+                    </article>
+
+
+                    <!-- =================================================
+                         【作品三｜金工製作】
+
+                         使用工作中的實拍照片，
+                         讓網站不只是展示成品，
+                         而是呈現「製作過程」。
+                    ================================================== -->
+
+                    <article class="work-card">
+
+
+                        <img
+                            src="https://images.pexels.com/photos/4354593/pexels-photo-4354593.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                            alt="珠寶金工老師使用工具製作手作銀戒"
+                        >
+
+
+                        <div class="work-content">
+
+
+                            <h3>
+                                金工實作體驗
+                            </h3>
+
+
+                            <p>
+                                親手使用金工工具，
+                                感受金屬在手中慢慢成形的過程。
+                            </p>
+
+
+                        </div>
+
+
+                    </article>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             【WORKS｜END】
+        ===================================================== -->
+
+
+        <!-- =====================================================
+             【PROCESS｜START】
+        ===================================================== -->
+
+        <section class="section process-section">
+
+
+            <div class="container">
+
+
+                <div class="section-title">
+
+                    <span>
+                        YOUR CREATION JOURNEY
+                    </span>
+
+                    <h2>
+                        你的第一件珠寶這樣誕生
+                    </h2>
+
+                </div>
+
+
+                <div class="process-grid">
+
+
+                    <article class="process-card">
+
+
+                        <div class="process-number">
+                            01
+                        </div>
+
+
+                        <h3>
+                            選擇設計
+                        </h3>
+
+
+                        <p>
+                            找到你喜歡的風格與作品方向。
+                        </p>
+
+
+                    </article>
+
+
+                    <article class="process-card">
+
+
+                        <div class="process-number">
+                            02
+                        </div>
+
+
+                        <h3>
+                            開始加工
+                        </h3>
+
+
+                        <p>
+                            認識工具，親手處理金屬材料。
+                        </p>
+
+
+                    </article>
+
+
+                    <article class="process-card">
+
+
+                        <div class="process-number">
+                            03
+                        </div>
+
+
+                        <h3>
+                            打磨細修
+                        </h3>
+
+
+                        <p>
+                            慢慢修整細節，
+                            讓作品越來越接近完成。
+                        </p>
+
+
+                    </article>
+
+
+                    <article class="process-card">
+
+
+                        <div class="process-number">
+                            04
+                        </div>
+
+
+                        <h3>
+                            戴上作品
+                        </h3>
+
+
+                        <p>
+                            完成屬於自己的珠寶，
+                            帶回家留住這份回憶。
+                        </p>
+
+
+                    </article>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             【PROCESS｜END】
+        ===================================================== -->
+
+
+        <!-- =====================================================
+             【TEACHER｜START】
+        ===================================================== -->
+
+        <section class="section teacher-section">
+
+
+            <div class="container">
+
+
+                <div class="teacher-layout">
+
+
+                    <div class="teacher-photo">
+
+
+                        <img
+                            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=90"
+                            alt="珠寶金工手作課程老師"
+                        >
+
+
+                    </div>
+
+
+                    <div class="teacher-content">
+
+
+                        <h2>
+                            GaGa 老師
+                        </h2>
+
+
+                        <div class="teacher-title">
+                            珠寶金工・手作設計
+                        </div>
+
+
+                        <p>
+
+                            從工具使用到作品完成，
+                            用容易理解的方式陪你一步一步完成自己的第一件珠寶。
+
+                        </p>
+
+
+                        <p>
+
+                            不要求你一開始就很厲害，
+                            只希望你完成作品的那一刻，
+                            能夠對自己說：
+
+                            <strong>
+                                「這是我親手做的。」
+                            </strong>
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             【TEACHER｜END】
+        ===================================================== -->
+
+
+        <!-- =====================================================
+             【CTA｜START】
+
+             【SEO 第 6 項｜假按鈕抓漏】
+
+             本版本使用真正的 HTML 超連結，
+             直接連到 #register 報名區。
+
+             不使用 JavaScript。
+        ===================================================== -->
+
+        <section class="cta-section">
+
+
+            <h2>
+                下一件珠寶，換你親手完成
+            </h2>
+
+
+            <p>
+                不需要金工經驗，只要帶著你的創意來。
+            </p>
+
+
+            <a
+                href="#register"
+                class="cta-button"
+            >
+                立即預約體驗課
+            </a>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             【CTA｜END】
+        ===================================================== -->
+
+
+        <!-- =====================================================
+             【REGISTER｜START】
+        ===================================================== -->
+
+        <section
+            class="section register-section"
+            id="register"
+        >
+
+
+            <div class="container">
+
+
+                <div class="register-box">
+
+
+                    <h2>
+                        預約你的金工體驗
+                    </h2>
+
+
+                    <p>
+                        留下基本資料，我們將與你聯繫課程資訊。
+                    </p>
+
+
+                    <form class="register-form">
+
+
+                        <div class="form-group">
+
+
+                            <label for="name">
+                                姓名
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                autocomplete="name"
+                                placeholder="請輸入您的姓名"
+                                required
+                            >
+
+
+                        </div>
+
+
+                        <div class="form-group">
+
+
+                            <label for="phone">
+                                電話
+                            </label>
+
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                autocomplete="tel"
+                                placeholder="請輸入您的電話"
+                                required
+                            >
+
+
+                        </div>
+
+
+                        <div class="form-group">
+
+
+                            <label for="email">
+                                Email
+                            </label>
+
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                autocomplete="email"
+                                placeholder="請輸入您的 Email"
+                                required
+                            >
+
+
+                        </div>
+
+
+                        <!-- =============================================
+                             【SEO 第 6 項｜真正 Button】
+
+                             type="submit"
+                             是真正的表單送出按鈕。
+                        ============================================== -->
+
+                        <button
+                            type="submit"
+                            class="submit-button"
+                        >
+                            送出預約申請
+                        </button>
+
+
+                        <p class="form-note">
+                            ※ 本頁為前端課程作品示範，實際送出功能可於後續 PHP 課程再串接。
+                        </p>
+
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             【REGISTER｜END】
+        ===================================================== -->
+
+
+    </main>
+
+
+    <!-- =========================================================
+         【SEO 第 8 項｜語意化 Footer】
+    ========================================================= -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 光影金工 Jewelry Metalwork.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================================
+         【作業完成檢查】
+
+         ✓ HTML5
+         ✓ CSS
+         ✓ :root CSS 變數
+         ✓ Flexbox
+         ✓ Grid
+         ✓ gap: 24px
+         ✓ RWD
+         ✓ @media 768px
+         ✓ SEO 八大架構
+         ✓ H1 唯一性
+         ✓ H1 / H2 / H3
+         ✓ Meta Description
+         ✓ Image Alt
+         ✓ 正確超連結
+         ✓ HTML lang
+         ✓ Title
+         ✓ 語意化 HTML
+         ✓ Landing Page
+         ✓ 珠寶金工課程
+         ✓ 無 JavaScript
+         ✓ 無 PHP
+         ✓ 單一 index.html
+
+         
+    ========================================================= -->
+
+
+</body>
+
+</html>

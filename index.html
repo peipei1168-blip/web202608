@@ -1,196 +1,861 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人履歷｜前端工程師</title>
+    <meta name="description" content="個人前端網頁設計作品集，展示光影金工、四季旅行日記及網頁設計學習成果。">
+
+    <title>MY DESIGN PORTFOLIO｜個人作品集</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         :root {
-            --bg: #0b1220;
-            --card: #152238;
-            --accent: #32e6d2;
-            --text: #eef5ff;
-            --muted: #a5b6cd;
+            --bg: #17121c;
+            --surface: #211925;
+            --card: #2b222f;
+            --accent: #e8a8c5;
+            --accent-light: #ffd5e7;
+            --text: #fff2f7;
+            --muted: #d0bfcb;
+            --border: #60465b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
+            margin: 0;
             background: var(--bg);
             color: var(--text);
+            font-family: "Microsoft JhengHei", sans-serif;
+            line-height: 1.8;
         }
 
-        .navbar,
-        .footer {
-            background: #080e19;
+        a {
+            text-decoration: none;
         }
 
-        .navbar-brand,
-        .nav-link {
+        section {
+            padding: 70px 0;
+            scroll-margin-top: 90px;
+        }
+
+        /* 導覽列 */
+
+        .navbar {
+            background: rgba(19, 14, 23, 0.97);
+            border-bottom: 1px solid #493344;
+            padding: 16px 0;
+        }
+
+        .navbar-brand {
             color: var(--text);
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
-        .nav-link:hover {
+        .navbar-brand:hover {
             color: var(--accent);
         }
+
+        .navbar .nav-link {
+            color: var(--muted);
+            font-size: 14px;
+            transition: color .3s;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link:focus {
+            color: var(--accent);
+        }
+
+        .navbar-toggler {
+            border: 1px solid var(--accent);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23e8a8c5' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        /* 首頁 */
 
         .hero {
-            padding: 90px 0 70px;
+            padding: 115px 0;
+            background:
+                radial-gradient(circle at 85% 25%,
+                    rgba(232, 168, 197, .16),
+                    transparent 40%),
+                linear-gradient(135deg, #17121c, #3b293d);
         }
 
-        .highlight,
-        .section-title {
+        .eyebrow {
             color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
         }
 
-        .section-title {
-            font-weight: 700;
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 60px);
+            font-weight: 900;
+            line-height: 1.35;
             margin-bottom: 25px;
         }
 
-        .intro,
+        .highlight {
+            color: var(--accent);
+        }
+
+        .hero p.intro {
+            max-width: 760px;
+            font-size: 17px;
+            color: var(--muted);
+            line-height: 2;
+        }
+
+        /* 按鈕 */
+
+        .btn-tech {
+            display: inline-block;
+            background: var(--accent);
+            border: 1px solid var(--accent);
+            color: #1b121b;
+            border-radius: 10px;
+            padding: 12px 27px;
+            font-weight: 700;
+            transition: all .3s ease;
+        }
+
+        .btn-tech:hover {
+            background: var(--accent-light);
+            color: #1b121b;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(232,168,197,.22);
+        }
+
+        .btn-outline-tech {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 10px;
+            padding: 12px 27px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .btn-outline-tech:hover {
+            background: rgba(232,168,197,.12);
+            color: var(--accent-light);
+        }
+
+        /* 區塊標題 */
+
+        .section-title {
+            color: var(--accent);
+            font-size: clamp(26px, 3vw, 35px);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .section-desc {
+            color: var(--muted);
+            margin-bottom: 35px;
+        }
+
+        /* 一般資訊卡片 */
+
+        .info-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 30px;
+            height: 100%;
+            transition: transform .35s, box-shadow .35s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.25);
+        }
+
+        .info-card h3 {
+            font-weight: 700;
+            color: var(--text);
+        }
+
         .muted {
             color: var(--muted);
         }
 
-        .info-card {
-            background: var(--card);
-            border: 1px solid #263c54;
-            border-radius: 14px;
-            padding: 25px;
-            height: 100%;
-        }
+        /* 技能標籤 */
 
         .skill {
             display: inline-block;
-            padding: 7px 13px;
-            margin: 4px;
-            border: 1px solid var(--accent);
-            border-radius: 20px;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 7px 15px;
+            margin: 5px 5px 5px 0;
+            color: var(--accent-light);
+            font-size: 14px;
+            background: rgba(232,168,197,.06);
+        }
+
+        /* 精選作品 */
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            transition: transform .35s, box-shadow .35s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(0,0,0,.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: #493344;
+        }
+
+        .project-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.06);
+        }
+
+        .project-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 30px;
+        }
+
+        .project-label {
             color: var(--accent);
-        }
-
-        .btn-tech {
-            background: var(--accent);
-            color: #071421;
-            border: none;
+            font-size: 13px;
+            letter-spacing: 1.3px;
             font-weight: 700;
+            margin-bottom: 16px;
         }
 
-        .btn-tech:hover {
-            background: #8bf9ed;
-            color: #071421;
+        .project-body h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 15px;
         }
 
-        section {
-            padding: 35px 0;
-        }
-
-        .footer {
+        .project-description {
             color: var(--muted);
-            padding: 22px 0;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 25px;
+        }
+
+        .project-tag {
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            padding: 5px 12px;
+            color: var(--accent-light);
+            background: rgba(232,168,197,.08);
+            font-size: 12px;
+        }
+
+        .project-body .btn-tech {
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        /* 設計理念 */
+
+        .design-section {
+            background: var(--surface);
+        }
+
+        .design-quote {
+            color: var(--accent);
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        /* 聯絡方式 */
+
+        .contact-link {
+            color: var(--accent-light);
+            overflow-wrap: anywhere;
+        }
+
+        .contact-link:hover {
+            color: white;
+        }
+
+        /* 頁尾 */
+
+        footer {
+            background: #100c14;
+            border-top: 1px solid #493344;
+            padding: 30px 0;
+            color: var(--muted);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* RWD 手機版 */
+
+        @media (max-width: 767.98px) {
+            section {
+                padding: 48px 0;
+            }
+
+            .hero {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p.intro {
+                font-size: 15px;
+            }
+
+            .project-image {
+                height: 215px;
+            }
+
+            .project-body {
+                padding: 23px;
+            }
+
+            .project-body h3 {
+                font-size: 21px;
+            }
+
+            .info-card {
+                padding: 23px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: .01ms !important;
+            }
         }
     </style>
 </head>
 
 <body>
+
     <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-lg">
+
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#top">MY PORTFOLIO</a>
-            <div class="ms-auto d-flex gap-3">
-                <a class="nav-link" href="#about">關於我</a>
-                <a class="nav-link" href="#projects">作品集</a>
+
+            <a class="navbar-brand" href="#top">
+                MY DESIGN PORTFOLIO
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar"
+                    aria-expanded="false"
+                    aria-label="開啟導覽選單">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <div class="navbar-nav ms-auto gap-lg-3">
+                    <a class="nav-link" href="#about">關於我</a>
+                    <a class="nav-link" href="#skills">專業技能</a>
+                    <a class="nav-link" href="#projects">作品集</a>
+                    <a class="nav-link" href="#design">設計理念</a>
+                    <a class="nav-link" href="#contact">聯絡方式</a>
+                </div>
             </div>
+
         </div>
     </nav>
 
-    <!-- 個人介紹 -->
+    <!-- 首頁主視覺 -->
+
     <header id="top" class="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <p class="highlight fw-bold">HELLO, I'M A FRONT-END DEVELOPER</p>
-                    <h1 class="display-4 fw-bold">王小明 <span class="highlight">｜前端工程師</span></h1>
-                    <p class="intro fs-5 mt-3">熱愛網頁設計與互動開發，擅長運用 HTML、CSS、JavaScript 及 Bootstrap，打造清晰、易用且支援 RWD 的網站。</p>
-                    <a href="#projects" class="btn btn-tech mt-3 px-4 py-2">查看我的作品</a>
-                </div>
+
+            <p class="eyebrow">
+                FRONT-END DESIGN & WEB DEVELOPMENT
+            </p>
+
+            <h1>
+                讓設計與程式，<br>
+                <span class="highlight">
+                    成為實現創意的力量。
+                </span>
+            </h1>
+
+            <p class="intro">
+                你好！歡迎來到我的個人前端設計作品集。
+                我正在學習前端網頁設計與系統開發，
+                透過 HTML、CSS、JavaScript 與 Bootstrap，
+                打造兼具美感、互動性與實用性的網站。
+            </p>
+
+            <p class="intro">
+                我相信好的網站不只是畫面漂亮，
+                更應該讓使用者能夠輕鬆操作，
+                並真正解決生活與工作中的問題。
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 mt-4">
+                <a href="#projects" class="btn-tech">
+                    探索我的作品 ↗
+                </a>
+
+                <a href="#about" class="btn-outline-tech">
+                    了解更多關於我
+                </a>
             </div>
+
         </div>
     </header>
 
-    <main class="container">
-        <!-- 關於我與學經歷 -->
+    <main>
+
+        <!-- 01 關於我 -->
+
         <section id="about">
-            <h2 class="section-title">01 / 關於我與學經歷</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="info-card">
-                        <h4>學歷</h4>
-                        <p class="mb-1 fw-bold">○○科技大學｜資訊管理系</p>
-                        <p class="muted mb-0">2018 – 2022（請自行修改）</p>
+            <div class="container">
+
+                <p class="eyebrow">ABOUT ME</p>
+
+                <h2 class="section-title">
+                    01 / 關於我與學經歷
+                </h2>
+
+                <p class="section-desc">
+                    從資訊管理到前端設計，
+                    持續累積技術與實作能力。
+                </p>
+
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+                        <div class="info-card">
+
+                            <p class="eyebrow">EDUCATION</p>
+
+                            <h3 class="h4 mb-3">
+                                學歷背景
+                            </h3>
+
+                            <p class="fw-bold">
+                                國立高雄科技大學｜資訊管理
+                            </p>
+
+                            <p class="muted mb-0">
+                                具備資訊管理學習背景，
+                                曾接觸資料庫管理與資訊系統相關課程，
+                                持續精進程式設計與資料處理能力。
+                            </p>
+
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-card">
-                        <h4>經歷</h4>
-                        <p class="mb-1 fw-bold">前端網頁開發實作｜個人專案</p>
-                        <p class="muted mb-0">2023 – 至今（請自行修改）</p>
-                        <p class="mt-3 mb-0">練習響應式版面、網頁互動與 API 資料呈現。</p>
+
+                    <div class="col-md-6">
+                        <div class="info-card">
+
+                            <p class="eyebrow">EXPERIENCE</p>
+
+                            <h3 class="h4 mb-3">
+                                學習與實務經驗
+                            </h3>
+
+                            <p class="fw-bold">
+                                2026｜前端與跨平台程式設計訓練
+                            </p>
+
+                            <p class="muted">
+                                學習 HTML、CSS、JavaScript、
+                                Bootstrap、PHP、MySQL、
+                                Flutter、Figma 與 Photoshop。
+                            </p>
+
+                            <p class="muted mb-0">
+                                曾參與工程與資訊系統相關工作，
+                                希望結合實務經驗與程式設計，
+                                開發更有效率的資訊系統。
+                            </p>
+
+                        </div>
                     </div>
+
                 </div>
+
             </div>
         </section>
 
-        <!-- 技能 -->
+        <!-- 02 專業技能 -->
+
         <section id="skills">
-            <h2 class="section-title">02 / 專業技能</h2>
-            <div class="info-card">
-                <span class="skill">HTML5</span>
-                <span class="skill">CSS3</span>
-                <span class="skill">JavaScript</span>
-                <span class="skill">Bootstrap 5</span>
-                <span class="skill">RWD</span>
-                <span class="skill">Git</span>
+            <div class="container">
+
+                <p class="eyebrow">MY SKILLS</p>
+
+                <h2 class="section-title">
+                    02 / 設計與開發技能
+                </h2>
+
+                <p class="section-desc">
+                    從網頁版型到跨平台開發，
+                    逐步建立完整的技術基礎。
+                </p>
+
+                <div class="info-card">
+
+                    <h3 class="h5 mb-3">
+                        前端網頁設計
+                    </h3>
+
+                    <div>
+                        <span class="skill">HTML5</span>
+                        <span class="skill">CSS3</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">Bootstrap 5</span>
+                        <span class="skill">RWD</span>
+                        <span class="skill">Flexbox</span>
+                        <span class="skill">CSS Animation</span>
+                    </div>
+
+                    <hr class="border-secondary my-4">
+
+                    <h3 class="h5 mb-3">
+                        UI 設計與視覺工具
+                    </h3>
+
+                    <div>
+                        <span class="skill">Figma</span>
+                        <span class="skill">Photoshop</span>
+                        <span class="skill">UI Design</span>
+                    </div>
+
+                    <hr class="border-secondary my-4">
+
+                    <h3 class="h5 mb-3">
+                        持續學習的技術
+                    </h3>
+
+                    <div>
+                        <span class="skill">PHP</span>
+                        <span class="skill">MySQL</span>
+                        <span class="skill">Flutter</span>
+                        <span class="skill">Dart</span>
+                        <span class="skill">Git</span>
+                        <span class="skill">GitHub</span>
+                    </div>
+
+                </div>
+
             </div>
         </section>
 
-        <!-- 作品集：修改 href 即可更換作品連結 -->
+        <!-- 03 精選作品 -->
+
         <section id="projects">
-            <h2 class="section-title">03 / 精選作品</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="info-card">
-                        <h4>作品一｜蛋糕店網站_20261030</h4>
-                        <p class="muted">運用 HTML、CSS 與 Bootstrap 製作響應式網站並搭配AI生成。</p>
-                        <a href="20261030-ch6-ex03-AI01.html" class="btn btn-tech" target="_blank"
-                            rel="noopener noreferrer">查看作品</a>
+            <div class="container">
+
+                <p class="eyebrow">
+                    SELECTED WORKS
+                </p>
+
+                <h2 class="section-title">
+                    03 / 精選作品
+                </h2>
+
+                <p class="section-desc">
+                    記錄每一次練習，
+                    讓設計想法成為真正可以瀏覽的網站。
+                </p>
+
+                <div class="row g-4">
+
+                    <!-- PROJECT 01 光影金工 -->
+
+                    <div class="col-md-6">
+
+                        <article class="project-card">
+
+                            <div class="project-image">
+
+                                <img
+                                    src="jewelry.jpg"
+                                    alt="光影金工玫瑰金珠寶作品預覽"
+                                    loading="lazy">
+
+                            </div>
+
+                            <div class="project-body">
+
+                                <p class="project-label">
+                                    PROJECT 01 / JEWELRY WEBSITE
+                                </p>
+
+                                <h3>
+                                    光影金工｜手作珠寶網站
+                                </h3>
+
+                                <p class="project-description">
+                                    以手作珠寶金工體驗為主題，
+                                    運用 HTML、CSS 與網頁排版技術，
+                                    打造柔和粉色系的品牌形象網站。
+                                    呈現手作金工體驗、珠寶設計、
+                                    品牌特色與預約服務，
+                                    練習視覺設計與使用者介面規劃。
+                                </p>
+
+                                <div class="project-tags">
+                                    <span class="project-tag">HTML</span>
+                                    <span class="project-tag">CSS</span>
+                                    <span class="project-tag">UI Design</span>
+                                    <span class="project-tag">RWD</span>
+                                </div>
+
+                                <a href="jewelry.html"
+                                   class="btn-tech"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    查看作品 ↗
+                                </a>
+
+                            </div>
+
+                        </article>
+
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info-card">
-                        <h4>作品二｜時間軸排版_20261112</h4>
-                        <p class="muted">透過postion與roller應用..................。</p>
-                        <a href="20261102-ch7-flex-ex01-timeline-section-AI03.html" class="btn btn-tech" target="_blank"
-                            rel="noopener noreferrer">查看作品</a>
+
+                    <!-- PROJECT 02 四季旅行日記 -->
+
+                    <div class="col-md-6">
+
+                        <article class="project-card">
+
+                            <div class="project-image">
+
+                                <img
+                                    src="spring_portfolio.jpg"
+                                    alt="2026 四季旅行日記櫻花步道預覽"
+                                    loading="lazy">
+
+                            </div>
+
+                            <div class="project-body">
+
+                                <p class="project-label">
+                                    PROJECT 02 / INTERACTIVE WEBSITE
+                                </p>
+
+                                <h3>
+                                    2026 四季旅行日記
+                                </h3>
+
+                                <p class="project-description">
+                                    使用 HTML、CSS 與 Bootstrap
+                                    製作四季旅行主題的時間軸網站。
+                                    結合左右交錯排版、
+                                    四方向 Roller 滑動遮罩效果，
+                                    以及適應不同螢幕的 RWD 設計，
+                                    展示網頁版型與互動動畫成果。
+                                </p>
+
+                                <div class="project-tags">
+                                    <span class="project-tag">HTML</span>
+                                    <span class="project-tag">CSS</span>
+                                    <span class="project-tag">Bootstrap</span>
+                                    <span class="project-tag">Animation</span>
+                                </div>
+
+                                <a href="20261102_travels_2.html"
+                                   class="btn-tech"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    查看作品 ↗
+                                </a>
+
+                            </div>
+
+                        </article>
+
                     </div>
+
                 </div>
 
             </div>
         </section>
 
-        <!-- 聯絡資訊 -->
-        <section id="contact" class="pb-5">
-            <h2 class="section-title">04 / 聯絡方式</h2>
-            <div class="info-card">
-                <p class="mb-2">Email：yourname@example.com</p>
-                <p class="mb-0">GitHub：github.com/yourname</p>
+        <!-- 04 設計理念 -->
+
+        <section id="design" class="design-section">
+            <div class="container">
+
+                <p class="eyebrow">
+                    DESIGN PHILOSOPHY
+                </p>
+
+                <h2 class="section-title">
+                    04 / 我的設計理念
+                </h2>
+
+                <div class="info-card">
+
+                    <p class="design-quote">
+                        Design × Technology × Experience
+                    </p>
+
+                    <p>
+                        我希望每一個作品都能兼顧
+                        視覺設計、使用者體驗與實際功能。
+                    </p>
+
+                    <p class="muted">
+                        從最初的 HTML 結構，
+                        到 CSS 版型設計、JavaScript 互動效果，
+                        每一次練習都是累積實作能力的過程。
+                    </p>
+
+                    <p class="muted mb-0">
+                        未來希望持續精進前端開發、
+                        資料庫與系統整合能力，
+                        將創意轉化為真正可以使用的產品。
+                    </p>
+
+                </div>
+
             </div>
         </section>
+
+        <!-- 05 聯絡方式 -->
+
+        <section id="contact">
+            <div class="container">
+
+                <p class="eyebrow">
+                    CONTACT
+                </p>
+
+                <h2 class="section-title">
+                    05 / 聯絡方式
+                </h2>
+
+                <div class="info-card text-center">
+
+                    <p class="eyebrow">
+                        LET'S CONNECT
+                    </p>
+
+                    <h3 class="h4 mb-3">
+                        一起交流設計與技術
+                    </h3>
+
+                    <p class="muted">
+                        歡迎交流網頁設計、前端開發、
+                        資料庫與資訊系統相關議題。
+                    </p>
+
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+
+                        <a href="https://github.com/peipei1168-blip"
+                           class="btn-tech"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            我的 GitHub ↗
+                        </a>
+
+                        <a href="https://github.com/peipei1168-blip/web202608"
+                           class="btn-outline-tech"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            查看網站原始碼 ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <footer class="footer text-center">© 2026 王小明｜Frontend Developer</footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- 頁尾 -->
 
+    <footer>
+        <div class="container">
+
+            <p class="mb-1">
+                © 2026 MY DESIGN PORTFOLIO
+            </p>
+
+            <p class="mb-0">
+                Front-End Design & Development
+            </p>
+
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.querySelectorAll('#mainNavbar .nav-link')
+            .forEach(function (link) {
+                link.addEventListener('click', function () {
+                    const navbar = document.getElementById('mainNavbar');
+
+                    if (navbar.classList.contains('show')) {
+                        bootstrap.Collapse
+                            .getOrCreateInstance(navbar, {
+                                toggle: false
+                            })
+                            .hide();
+                    }
+                });
+            });
+    </script>
+
+</body>
 </html>
